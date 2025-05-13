@@ -22,7 +22,6 @@ db.connect(err => {
 
 // Middleware to parse request bodies
 app.use(express.json()); // for parsing application/json
-app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 
 // CORS setup
 app.use(cors({

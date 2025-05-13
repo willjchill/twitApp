@@ -1,8 +1,10 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 function Login(props) {
   let [invalid, setInvalid] = useState(false); // for error message
   const errorJSX = <p>Invalid username or password. Try again.</p>
+  const navigate = useNavigate();
 
   // read db to see if username and password is valid
   const tryLogin = async function(e) {
@@ -10,7 +12,7 @@ function Login(props) {
     try {
       let uid = e.target.elements.uid.value;
       let pid = e.target.elements.pid.value;
-      console.log(uid, pid);
+
       const response = await fetch('http://localhost:3000/login', {
         method: 'POST',
         headers: {
@@ -21,14 +23,15 @@ function Login(props) {
           password: pid
         })
       });
-
+      console.log(response);
       if (!response.ok) {
         throw new Error('Login failed');
       }
-
       props.setUID(uid);
       props.setLogin(true);
-
+      navigate('/');
+      document.cookie = `login=true;`
+      document.cookie = `uid=${uid};`
     } catch (error) {
       console.error('Error:', error);
       setInvalid(true);
