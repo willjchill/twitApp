@@ -23,8 +23,8 @@ function App() {
     <Routes>
       {login ?
         <>
-          <Route path="/" element={<Home uid={uid} setLogin={setLogin} />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="/home" element={<Home uid={uid} setLogin={setLogin} />} />
+          <Route path="*" element={<Navigate to="/home" replace />} />
         </> :
         <>
           <Route path="/login" element={<Login setUID={setUID} setLogin={setLogin} />} />

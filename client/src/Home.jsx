@@ -1,13 +1,11 @@
-import UserList from './userList.jsx'
-import Logout from './Logout.jsx'
+import Sidebar from './Sidebar.jsx'
+import Feed from './Feed.jsx'
 
 function Home(props) {
   return (
     <>
-      <h1>Hello {props.uid}.</h1>
-      <UserList />
-      <br /> <br />
-      <Logout setLogin={props.setLogin} />
+      <Sidebar {...props} />
+      <Feed {...props} />
     </>
   );
 }

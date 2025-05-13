@@ -39,27 +39,29 @@ function Login(props) {
   }
 
   return (
-    <>
-      <h1>LOGIN PAGE</h1>
-      <form onSubmit={tryLogin}>
-        <div>
-          <label>
-            Username :
-            <input type='text' name='uid' />
-          </label>
-        </div>
-        <br />
-        <div>
-          <label>
-            Password :
-            <input type='text' name='pid' />
-          </label>
-        </div>
-        <br />
-        <button type='submit'>Login</button>
-      </form>
-      {invalid ? errorJSX : <p />}
-    </>
+    <div className='h-screen w-screen flex justify-center align-middle'>
+      <div className='pt-5 flex flex-col gap-4 align-middle h-1/2 w-1/2 max-h-120 max-w-120'>
+        <h1 className='font-bold text-center'>Log in to Twitter (Clone)</h1>
+        <form className='flex flex-col gap-4' onSubmit={tryLogin}>
+          <div className='relative'>
+            <input type='text' name='uid' className='peer h-12 w-full border-b-2 border-gray-300 bg-transparent pt-4 text-sm text-gray-900 placeholder-transparent focus:border-blue-500 focus:outline-none' placeholder='Username' />
+            <label htmlFor='uid' className='pointer-events-none absolute left-0 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-0 peer-focus:text-sm peer-focus:text-blue-500'>
+              Username
+            </label>
+          </div>
+          <div className='relative'>
+            <input type='text' name='pid' className='peer h-12 w-full border-b-2 border-gray-300 bg-transparent pt-4 text-sm text-gray-900 placeholder-transparent focus:border-blue-500 focus:outline-none' placeholder='Password' />
+            <label htmlFor='pid' className='pointer-events-none absolute left-0 text-sm text-gray-500 transition-all peer-placeholder-shown:top-3.5 peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-400 peer-focus:top-0 peer-focus:text-sm peer-focus:text-blue-500'>
+              Password
+            </label>
+          </div>
+          <button type='submit' className='cursor-pointer bg-sky-500 hover:bg-sky-700 p-2 rounded-md text-white font-bold'>
+            Log In
+          </button>
+        </form>
+        {invalid ? errorJSX : <p />}
+      </div>
+    </div>
   );
 }
 
