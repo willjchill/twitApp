@@ -41,6 +41,9 @@ function Login(props) {
   return (
     <div className='h-screen w-screen flex justify-center align-middle'>
       <div className='pt-5 flex flex-col gap-4 align-middle h-1/2 w-1/2 max-h-120 max-w-120'>
+        <div className='flex justify-center'>
+          <img src='/src/svg/twitterlogo.svg' className='w-16 h-16' />
+        </div>
         <h1 className='font-bold text-center'>Log in to Twitter (Clone)</h1>
         <form className='flex flex-col gap-4' onSubmit={tryLogin}>
           <div className='relative'>
