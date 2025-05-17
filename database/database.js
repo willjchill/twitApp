@@ -63,6 +63,25 @@ app.post('/login', (req, res) => {
 	});
 });
 
+app.post('/tweet', (req, res) => {
+	const { username, content } = req.body
+
+	if (!username || !content) {
+		return res.status(400).send('Input text is required.');
+	}
+
+	const sql = 'INSERT IGNORE INTO tweets (username, content) VALUES (?, ?)';
+
+	db.query(sql, [username, content], (err, results) => {
+		if (err) {
+			console.log(err);
+			return res.status(500).send('Database error');
+		}
+
+		res.send('Successfully updated.');
+	});
+});
+
 // Start the server
 app.listen(port, () => {
 	console.log(`Server running at http://localhost:${port}`);
